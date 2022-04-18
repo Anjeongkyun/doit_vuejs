@@ -6,7 +6,8 @@
   </head>
   <body>
     <div id = "app">
-        {{message}}
+        {{message}}<br>
+        {{key}}
       </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
@@ -14,8 +15,22 @@
           new Vue({
             el : '#app',
             data :  {
-              message: 'Hello Vue js!'
-            }
+              message: 'Hello Vue js!',
+              key : '안녕하세요'
+            },
+            beforeCreate: function() {
+              console.log("beforeCreate");
+            },
+            created: function() {
+              console.log("created");
+            },
+            mounted: function() {
+              console.log("mounted");
+              this.message = 'mounted : Hello Vue !'
+            },
+            updated: function() {
+              console.log("updated");
+            },
           })
         </script>
       </body>
