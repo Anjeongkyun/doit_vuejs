@@ -1,28 +1,18 @@
-  //
-  //
-  // var cmp1 = {
-  //   template : '<div>첫 번째 지역 컴포넌트 : {{cmp1Data}} </div>',
-  //   data: function(){
-  //     return {
-  //       cmp1Data : 100
-  //     }
-  //   }
-  // };
-  //
-  // var cmp2 = {
-  //   template : '<div>두 번째 지역 컴포넌트 : {{cmp2Data}} </div>',
-  //   data: function(){
-  //     return {
-  //       cmp2data : cmp1.data.cmp1Data
-  //     }
-  //   }
-  // };
-  //
-  //
-  // var app = new Vue({
-  //   el: '#app',
-  //   components:{
-  //     'my-component1' : cmp1,
-  //     'my-component2' : cmp2
-  //   }
-  // });
+
+  Vue.component('child-component', {
+    props: ['propsdata'],
+    template : '<p>{{propsdata}}</p>'
+  });
+
+  Vue.component('sibling-component', {
+    props: ['propsdata'],
+    template : '<p>{{propsdata}}</p>'
+  });
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      message : 'hello vue ~!  this is a message',
+      anotherMessage : 'hello vue ~!!! this is a anotherMessage'
+    }
+  });
