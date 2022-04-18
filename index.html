@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
   <head>
     <meta charset="utf-8">
@@ -6,30 +6,30 @@
   </head>
   <body>
     <div id = "app">
-        {{message}}<br>
-        {{key}}
+        <button>컴포넌트 등록</button><br>
+        {{message}}
+        <my-component></my-component> <!-- 전역 컴포넌트 생성-->
+        <my-local-component></my-local-component> <!-- 지역 컴포넌트 생성-->
       </div>
 
         <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
-        <<script>
+        <script>
+
+          Vue.component('my-component', {
+            template : '<div>전역 컴포넌트가 등록되었습니다.</div>'
+          })
+
+          var cmp = {
+            template : '<div>지역 컴포넌트가 등록되었습니다.</div>'
+          };
+
           new Vue({
             el : '#app',
+            components: {
+              'my-local-component' : cmp
+            },
             data :  {
               message: 'Hello Vue js!',
-              key : '안녕하세요'
-            },
-            beforeCreate: function() {
-              console.log("beforeCreate");
-            },
-            created: function() {
-              console.log("created");
-            },
-            mounted: function() {
-              console.log("mounted");
-              this.message = 'mounted : Hello Vue !'
-            },
-            updated: function() {
-              console.log("updated");
             },
           })
         </script>
