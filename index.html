@@ -6,21 +6,28 @@
   </head>
   <body>
     <div id = "app">
-      <button v-on:click="getData">프레임워크 목록 가져오기</button>
+      <a v-if="flag">jeongkyun hi</a>
+      <ul>
+        <li v-for = "system in system">{{system}}</li>
+      </ul>
+      <p v-show="flag">jeongkyun</p>
+      <h5 v-bind:id = "uid">vue uid</h5>
+      <button v-on:click="popupAlert">경고 창 버튼</button>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
     <script>
       new Vue({
         el : '#app',
-        methods : {
-          getData: function() {
-            axios.get('https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json')
-            .then(function(response){
-              console.log(response);
-            });
+        data:{
+          flag : true,
+          system : ['android', 'ios', 'window'],
+          uid : 10
+        },
+        methods :  {
+          popupAlert: function() {
+            return alert('경고 창입니다');
           }
         }
       });
